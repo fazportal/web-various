@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08121d">
+<title>ドールズフロントライン｜世界の全景</title>
+<style>
+/* Shared, self-contained design system for both documents. */
+:root{color-scheme:dark;--bg:#08121d;--surface:#101e2c;--raised:#172b3e;--ink:#edf4f7;--sub:#b7c8d2;--muted:#8fa8b9;--cyan:#83dced;--pink:#ff9ab1;--amber:#e5ba7a;--line:rgba(183,210,228,.17);--font:"Noto Sans CJK JP","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;--display:clamp(34px,4.5vw,65px);--heading:clamp(25px,2.5vw,36px);--body:16px;--small:13px;--radius:8px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:30px}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:var(--body);line-height:1.85;-webkit-font-smoothing:antialiased}body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 75% 5%,#16304766,transparent 45%),linear-gradient(90deg,transparent 49.9%,#83dced05 50%,transparent 50.1%);background-size:auto,100px 100px}a{color:inherit;text-decoration:none}button{font:inherit}button,a{-webkit-tap-highlight-color:transparent}a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:5px}svg{display:block}p,h1,h2,h3,figure{margin:0}button{cursor:pointer}.shell{width:min(1280px,calc(100% - 80px));margin-inline:auto}.masthead{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-block:23px;border-bottom:1px solid var(--line)}.brand{font-family:Arial,sans-serif;font-weight:700;letter-spacing:.18em;font-size:12px;line-height:1.5;display:flex;gap:12px;align-items:center}.brand-mark{width:26px;height:29px;position:relative;display:inline-block;border:1px solid var(--cyan);clip-path:polygon(0 0,85% 0,100% 15%,100% 100%,15% 100%,0 85%)}.brand-mark::before,.brand-mark::after{content:"";position:absolute;background:var(--cyan)}.brand-mark::before{width:1px;height:21px;top:3px;left:12px}.brand-mark::after{height:1px;width:18px;left:3px;top:13px}.brand small{display:block;font-size:9px;font-weight:400;letter-spacing:.24em;color:var(--muted);margin-top:4px}.utilities{display:flex;align-items:center;gap:25px}.page-nav{display:flex;gap:20px;font-size:13px}.page-nav a{position:relative;color:var(--muted);padding-block:4px}.page-nav a[aria-current]{color:var(--ink)}.page-nav a[aria-current]::after{content:"";position:absolute;left:0;right:0;bottom:-24px;height:2px;background:var(--cyan)}.motion-toggle{display:flex;align-items:center;gap:8px;min-height:36px;padding:4px 0 4px 18px;color:var(--sub);border:0;border-left:1px solid var(--line);background:none;font-size:12px}.motion-toggle[hidden]{display:none}.motion-glyph{width:12px;height:12px;display:inline-block;border-inline:3px solid var(--cyan)}.motion-paused .motion-glyph{border:0;background:var(--cyan);clip-path:polygon(15% 0,100% 50%,15% 100%)}
+.hero{position:relative;display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:18px;min-height:440px;padding-block:56px 46px}.hero-copy{position:relative;z-index:1}.eyebrow{display:flex;align-items:center;gap:10px;color:var(--cyan);letter-spacing:.2em;font-size:11px;font-weight:700;font-family:Arial,sans-serif}.eyebrow::before{content:"";width:25px;height:1px;background:currentColor}.hero h1{font-size:var(--display);line-height:1.32;letter-spacing:-.055em;font-weight:700;margin-block:17px 20px}.hero h1 em{font-style:normal;color:var(--cyan)}.hero .intro{max-width:640px;color:var(--sub);font-size:16px;line-height:1.95}.hero-image{position:relative;width:calc(100% + 20px);margin-left:-20px;isolation:isolate}.hero-image::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg),transparent 14%,transparent 85%,var(--bg));pointer-events:none}.hero-image .scene-art{width:100%;height:auto}.hero-index{color:var(--muted);font-family:Arial,sans-serif;font-size:10px;letter-spacing:.24em;position:absolute;bottom:5px;right:30px}.chapter-nav{display:grid;grid-template-columns:repeat(6,1fr);border-block:1px solid var(--line);margin-bottom:72px}.chapter-nav a{display:flex;gap:10px;align-items:center;justify-content:center;font-size:12px;min-height:58px;border-right:1px solid var(--line);transition:color .2s,background .2s}.chapter-nav a:last-child{border:0}.chapter-nav a:hover{color:var(--cyan);background:#83dced06}.chapter-nav b{font-family:Arial,sans-serif;font-size:11px;color:var(--muted);font-weight:400}.chapter-nav .icon{width:18px;height:18px;color:var(--sub)}.icon{width:24px;height:24px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.story-section{--accent:var(--cyan);position:relative;display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);column-gap:60px;row-gap:32px;padding:0 0 60px;margin-bottom:64px;border-bottom:1px solid var(--line)}.tone-pink{--accent:var(--pink)}.tone-amber{--accent:var(--amber)}.section-copy{align-self:center}.chapter-label{display:flex;align-items:center;gap:12px;color:var(--accent,var(--cyan));font-size:13px;font-weight:700;letter-spacing:.08em;margin-bottom:20px}.chapter-label .chapter-number{font-family:Arial,sans-serif;font-size:15px;letter-spacing:.03em;border-bottom:1px solid currentColor;padding-bottom:2px}.chapter-label .icon{width:21px;height:21px}.story-section h2{font-size:var(--heading);line-height:1.5;letter-spacing:-.03em;margin-bottom:18px}.story-section h2 span{display:block}.story-section .body-copy{color:var(--sub);font-size:16px;line-height:1.95}.story-points{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:9px;font-size:14px;line-height:1.8}.story-points li{position:relative;padding-left:18px;color:#d1dde5}.story-points li::before{content:"";position:absolute;left:0;top:11px;width:4px;height:4px;background:var(--accent);transform:rotate(45deg)}.scene{position:relative;min-width:0;align-self:center}.scene-frame{position:relative;border:1px solid var(--line);background:#0b1724;overflow:hidden;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,20px 100%,0 calc(100% - 20px))}.scene-frame::before,.scene-frame::after{content:"";position:absolute;z-index:1;pointer-events:none}.scene-frame::before{inset:12px;border:1px solid #83dced0c}.scene-frame::after{top:0;left:0;width:56px;height:2px;background:var(--accent)}.scene-art{width:100%;height:auto;overflow:hidden}.scene figcaption{padding:14px 0 0;display:flex;justify-content:space-between;gap:20px;align-items:baseline}.scene-title{font-size:15px;color:var(--ink);font-weight:500;line-height:1.7}.scene-code{font-size:10px;font-family:Arial,sans-serif;letter-spacing:.17em;white-space:nowrap;color:var(--muted)}.scene-quote{grid-column:1/-1;border-left:2px solid var(--accent);padding-left:17px;font-size:15px;color:var(--sub);margin-top:-5px}.section-extra{grid-column:1/-1}.causal-route{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));list-style:none;padding:0;margin:2px 0 0;border-top:1px solid var(--line)}.causal-route li{position:relative;padding:22px 18px 8px 0}.causal-route li::before{content:"";position:absolute;left:0;top:-4px;width:7px;height:7px;border-radius:50%;background:var(--cyan)}.causal-route li:nth-child(2)::before,.causal-route li:nth-child(3)::before,.causal-route li:nth-child(4)::before{background:var(--amber)}.causal-route li:not(:last-child)::after{content:"→";position:absolute;top:23px;right:15px;color:var(--muted);font-size:13px}.causal-route strong{display:block;font-size:14px;font-weight:500;padding-right:24px}.causal-route span{font-size:12px;color:var(--muted);display:block;margin-top:4px}.works{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.work{border-top:1px solid var(--line);padding-top:20px}.work .work-label{font-family:Arial,sans-serif;color:var(--cyan);font-size:10px;letter-spacing:.16em;margin-bottom:8px}.work h3{font-size:16px;line-height:1.7;margin-bottom:6px;font-weight:500}.work p{font-size:13px;color:var(--sub);line-height:1.8}.closing{display:flex;align-items:center;justify-content:space-between;gap:30px;padding:0 0 65px}.closing p{font-size:clamp(20px,2.5vw,32px);line-height:1.65;letter-spacing:-.025em}.closing .eyebrow{margin-bottom:13px}.closing-symbol{width:90px;height:90px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;flex-shrink:0}.closing-symbol .icon{width:42px;height:42px;color:var(--cyan)}.footer{border-top:1px solid var(--line);padding-block:20px 30px;display:flex;justify-content:space-between;gap:15px;color:var(--muted);font-size:10px;font-family:Arial,sans-serif;letter-spacing:.13em}
+/* The atlas uses real text and responsive grids above its decorative connections. */
+.atlas-hero{min-height:0;grid-template-columns:1fr .52fr;padding-block:45px 28px}.atlas-hero h1{font-size:clamp(32px,3.7vw,52px)}.atlas-hero .hero-image{max-height:245px;overflow:hidden;opacity:.7}.atlas-hero .scene-art{margin-top:-35px}.legend{display:flex;gap:24px;flex-wrap:wrap;margin:2px 0 36px;font-size:12px;color:var(--sub)}.legend span{display:flex;align-items:center;gap:8px}.legend i{width:7px;height:7px;display:inline-block;background:var(--cyan)}.legend .pink{background:var(--pink)}.legend .amber{background:var(--amber)}.atlas{position:relative;padding-bottom:44px}.atlas-wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}.atlas-wires path{fill:none;stroke:var(--cyan);stroke-width:1.5;opacity:.38}.atlas-wires .pink-wire{stroke:var(--pink)}.atlas-surface,.atlas-roots,.atlas-bridge,.atlas-core,.atlas-future{position:relative;z-index:1}.atlas-surface{display:grid;grid-template-columns:1fr 1fr;gap:72px}.map-node{--accent:var(--cyan);min-width:0;background:linear-gradient(160deg,#132332,#0b1723);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}.map-node.tone-pink{--accent:var(--pink)}.map-node.tone-amber{--accent:var(--amber)}.map-node .node-copy{padding:22px 24px 24px}.map-node .chapter-label{margin-bottom:10px;font-size:12px}.map-node h2{font-size:24px;line-height:1.5;letter-spacing:-.025em;margin-bottom:9px}.map-node p{color:var(--sub);font-size:14px;line-height:1.85}.map-node .mini-scene{height:146px;overflow:hidden;position:relative;background:#0b1724}.mini-scene .scene-art{width:100%;height:100%;object-fit:cover}.atlas-surface .mini-scene .scene-art{height:auto;position:absolute;top:50%;transform:translateY(-50%)}.atlas-bridge{text-align:center;margin:32px auto;padding:12px 20px;max-width:590px;background:var(--bg)}.atlas-bridge h2{font-size:22px;margin-bottom:3px}.atlas-bridge p{font-size:13px;color:var(--sub)}.atlas-roots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}.atlas-roots .mini-scene{height:150px}.atlas-roots .mini-scene .scene-art{object-fit:cover}.atlas-roots .node-copy{padding:20px}.atlas-roots h2{font-size:22px}.node-tags{display:flex;flex-wrap:wrap;gap:5px 12px;margin-top:12px;color:var(--cyan);font-size:12px}.compact-chain{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:9px}.compact-chain li{position:relative;padding-left:16px;font-size:13px;color:var(--sub);line-height:1.65}.compact-chain li::before{content:"";position:absolute;left:1px;top:8px;width:4px;height:4px;background:var(--accent)}.compact-chain li:not(:last-child)::after{content:"";position:absolute;left:2.5px;top:16px;bottom:-11px;border-left:1px solid var(--line)}.compact-chain strong{font-size:13px;font-weight:500;color:var(--ink)}.compact-chain span{display:block;font-size:12px;color:var(--muted)}.atlas-core{margin:30px auto 0;max-width:680px;padding:27px 20px 22px;text-align:center;background:var(--bg);border-block:1px solid var(--line)}.atlas-core .eyebrow{justify-content:center;font-size:10px}.atlas-core h2{font-size:clamp(23px,2.7vw,34px);line-height:1.5;margin-block:8px}.atlas-core p{font-size:13px;color:var(--sub)}.atlas-future{margin-top:38px;padding-top:28px;border-top:1px solid var(--line)}.future-heading{display:flex;align-items:baseline;gap:25px;justify-content:space-between;margin-bottom:25px}.future-heading .chapter-label{margin-bottom:8px;--accent:var(--pink)}.future-heading h2{font-size:26px;line-height:1.5}.future-origin{font-size:12px;color:var(--sub);padding:8px 13px;border:1px solid var(--line);white-space:nowrap;background:var(--bg)}.atlas-future .works{gap:28px}.atlas-future .work{padding:18px 0 0;border-color:#83dced40}.atlas-future .work h3{font-size:17px}
+.atlas-surface .mini-scene .scene-art{height:100%;position:static;transform:none}
+/* Animation is enhancement only: content remains visible without JavaScript. */
+[data-reveal]{transition:opacity .85s ease,transform .85s cubic-bezier(.2,.7,.2,1)}.motion-ready [data-reveal].reveal-pending{opacity:0;transform:translateY(25px)}.motion-ready [data-reveal].revealed{opacity:1;transform:none}.halo-pulse{animation:halo-breathe 6s ease-in-out infinite}.ambient-drift{animation:ambient-float 12s ease-in-out infinite;transform-box:fill-box;transform-origin:center}.signal-flow{stroke-dasharray:5 13;animation:signal-travel 18s linear infinite}.scan-sweep{animation:scan-pass 7s ease-in-out infinite;transform-box:fill-box;transform-origin:center}.trace-draw{stroke-dasharray:9 17;animation:signal-travel 22s linear infinite}.offscreen .scene-art *{animation-play-state:paused!important}.motion-paused *,.motion-paused *::before,.motion-paused *::after{animation-play-state:paused!important}.motion-paused [data-reveal]{transition:none!important;opacity:1!important;transform:none!important}@keyframes halo-breathe{0%,100%{opacity:.42}50%{opacity:.85}}@keyframes ambient-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}@keyframes signal-travel{to{stroke-dashoffset:-216}}@keyframes scan-pass{0%,100%{transform:translateY(-16px);opacity:.3}50%{transform:translateY(34px);opacity:.8}}
+@media(min-width:1100px){.story-section:nth-of-type(even) .section-copy{order:2}.story-section:nth-of-type(even) .scene{order:1}.story-section:nth-of-type(even) .section-extra,.story-section:nth-of-type(even) .scene-quote{order:3}}
+@media(max-width:1100px){.shell{width:calc(100% - 48px)}.story-section{column-gap:30px}.chapter-nav a{gap:7px;font-size:11px}.chapter-nav .icon{display:none}.hero h1{font-size:46px}.hero{min-height:380px}.atlas-surface{gap:40px}.atlas-roots{gap:16px}.map-node .node-copy{padding:18px}.map-node h2{font-size:22px}.atlas-roots h2{font-size:20px}.atlas-hero h1{font-size:40px}}
+@media(max-width:800px){.shell{width:calc(100% - 40px)}.brand small{display:none}.masthead{gap:14px;align-items:flex-start}.brand{font-size:10px;letter-spacing:.1em}.utilities{gap:14px}.page-nav{gap:15px;font-size:12px}.motion-toggle{font-size:0;padding-left:13px;min-height:30px}.page-nav a[aria-current]::after{bottom:-23px}.hero{grid-template-columns:1fr;gap:0;padding-top:35px;padding-bottom:25px}.hero h1{font-size:clamp(35px,6vw,52px)}.hero .intro{font-size:15px}.hero-image{width:100%;margin:10px 0 0;max-width:620px;justify-self:center}.hero-image .scene-art{max-height:340px}.chapter-nav{grid-template-columns:repeat(3,1fr);margin-bottom:45px}.chapter-nav a{font-size:12px;min-height:48px}.chapter-nav a:nth-child(3){border-right:0}.chapter-nav a:nth-child(-n+3){border-bottom:1px solid var(--line)}.story-section{grid-template-columns:1fr;gap:22px;margin-bottom:40px;padding-bottom:40px}.chapter-label{margin-bottom:12px}.story-section h2{font-size:28px}.story-section h2 span{display:inline}.story-section .body-copy{font-size:15px}.story-points{font-size:14px;margin-top:15px}.scene{margin-top:3px}.scene-quote{font-size:14px;margin-top:0}.causal-route{grid-template-columns:1fr;border-top:0;border-left:1px solid var(--line);margin:0 0 0 7px;gap:0}.causal-route li{padding:0 0 19px 21px}.causal-route li::before{top:10px;left:-4px}.causal-route li:not(:last-child)::after{display:none}.causal-route li:last-child{padding-bottom:0}.causal-route strong{font-size:14px}.causal-route span{margin-top:0}.works{grid-template-columns:1fr;gap:20px}.work{padding-top:16px}.closing{padding-bottom:40px}.closing-symbol{width:60px;height:60px}.closing-symbol .icon{width:28px;height:28px}.atlas-hero{grid-template-columns:1fr;padding-bottom:20px}.atlas-hero h1{font-size:36px}.atlas-hero .hero-image{display:none}.legend{gap:10px 20px;margin-bottom:25px}.atlas-surface{gap:18px}.map-node .node-copy{padding:18px}.map-node h2{font-size:21px}.atlas-surface .mini-scene{height:150px}.atlas-bridge{margin-block:25px}.atlas-roots{grid-template-columns:1fr;gap:30px}.atlas-roots .map-node{display:grid;grid-template-columns:.8fr 1.2fr;align-items:stretch}.atlas-roots .mini-scene{height:auto;min-height:270px}.atlas-roots .mini-scene .scene-art{height:100%;min-height:270px;object-fit:cover}.atlas-roots .node-copy{padding:22px}.atlas-core{margin-top:28px}.atlas-future{margin-top:30px}.future-heading{display:block}.future-origin{display:inline-block;margin-top:15px}.atlas-future .works{gap:22px}.atlas-wires{display:none}}
+@media(max-width:520px){.shell{width:calc(100% - 32px)}.masthead{flex-wrap:wrap;padding-block:15px;row-gap:14px}.brand{font-size:11px}.brand-mark{width:22px;height:25px}.brand-mark::before{height:17px;left:10px}.brand-mark::after{width:14px;top:11px}.utilities{gap:18px}.page-nav{gap:14px;font-size:11px}.page-nav a[aria-current]::after{bottom:-17px}.hero h1{font-size:35px}.hero .intro{font-size:14px;line-height:1.9}.hero-image{margin-top:15px}.hero-index{bottom:0;right:10px;font-size:9px}.chapter-nav a{gap:8px;font-size:11px}.chapter-nav{margin-bottom:35px}.chapter-nav b{font-size:10px}.story-section h2{font-size:25px;line-height:1.55}.scene figcaption{gap:10px}.scene-title{font-size:13px}.scene-code{font-size:9px}.story-points{font-size:13px}.scene-quote{font-size:13px}.closing-symbol{display:none}.footer{font-size:9px;letter-spacing:.05em}.atlas-hero h1{font-size:32px}.atlas-surface{grid-template-columns:1fr;gap:23px}.atlas-surface .map-node{display:grid;grid-template-columns:1fr}.atlas-surface .mini-scene{height:170px}.atlas-surface .mini-scene .scene-art{top:45%}.atlas-roots .map-node{grid-template-columns:1fr}.atlas-roots .mini-scene{height:175px;min-height:0}.atlas-roots .mini-scene .scene-art{min-height:0;height:100%;object-fit:cover}.atlas-roots .node-copy{padding:20px}.map-node h2,.atlas-roots h2{font-size:22px}.atlas-bridge{padding-inline:12px;margin-block:24px}.atlas-bridge h2{font-size:20px}.atlas-bridge p{font-size:12px}.atlas-core{padding-inline:9px}.atlas-core h2{font-size:24px}.future-heading h2{font-size:23px}.legend{font-size:11px}.atlas-future .work h3{font-size:16px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}[data-reveal]{opacity:1!important;transform:none!important}}
+@media print{html{scroll-behavior:auto}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}.shell{width:100%;max-width:none}.utilities,.chapter-nav{display:none}.hero{padding-top:20px;min-height:0}.hero h1{font-size:35px}.hero-image{max-width:400px}.story-section{break-inside:avoid;page-break-inside:avoid;margin-bottom:20px;padding-bottom:20px;display:grid;grid-template-columns:1fr 1fr;gap:25px}.story-section h2{font-size:23px}.story-section .body-copy{font-size:12px}.story-points{font-size:11px}.scene-title{font-size:11px}[data-reveal]{opacity:1!important;transform:none!important}*,*::before,*::after{animation:none!important;transition:none!important}.atlas-roots{grid-template-columns:repeat(3,1fr)}.atlas-roots .map-node{display:block}.atlas-roots .mini-scene{height:120px;min-height:0}.atlas-roots .mini-scene .scene-art{min-height:0}.atlas-surface{grid-template-columns:1fr 1fr}.atlas-future .works{grid-template-columns:repeat(3,1fr)}.atlas-wires{display:none}}
+
+</style>
+</head>
+<body>
+<div class="shell"><header class="masthead"><div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>GIRLS' FRONTLINE<small>WORLD CHRONICLE</small></span></div><div class="utilities"><nav class="page-nav" aria-label="資料"><a href="gfl_discovery_flow_v2.html">物語の深層</a><a href="gfl_overview_map_v2.html" aria-current="page">世界の全景</a></nav><button type="button" class="motion-toggle" data-motion-toggle aria-pressed="false" aria-label="動きを止める" hidden><span class="motion-glyph" aria-hidden="true"></span><span data-motion-label>動きを止める</span></button></div></header><main><section class="hero atlas-hero"><div class="hero-copy"><div class="eyebrow">THE WORLD BENEATH</div><h1>少女たちの物語は、<br><em>同じ世界の根</em>につながる。</h1><p class="intro">人物、戦場、科学、陰謀。<br>地表に見える物語の下で、遺跡技術と人類文明の歴史が交差する。</p></div><div class="hero-image"><svg class="scene-art" viewBox="0 0 640 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="map-hero-title map-hero-desc"><title id="map-hero-title">文明の地下でつながる遺跡</title><desc id="map-hero-desc">都市と組織を結ぶ地表の網が、地層の下に眠る遺跡へ収束する象徴画。</desc><defs>
+    <linearGradient id="map-hero-sky" x2=".8" y2="1"><stop stop-color="#14283b"/><stop offset="1" stop-color="#07111b"/></linearGradient>
+    <linearGradient id="map-hero-pink" x2="0" y2="1"><stop stop-color="#ffb4c5"/><stop offset="1" stop-color="#8b526d"/></linearGradient>
+    <linearGradient id="map-hero-steel" x2="1" y2="1"><stop stop-color="#b6d6df"/><stop offset=".4" stop-color="#628f9d"/><stop offset="1" stop-color="#263f53"/></linearGradient>
+    <linearGradient id="map-hero-beam" x2="0" y2="1"><stop stop-color="#83dced" stop-opacity=".48"/><stop offset="1" stop-color="#83dced" stop-opacity="0"/></linearGradient>
+    <linearGradient id="map-hero-earth" x2="0" y2="1"><stop stop-color="#172b3e"/><stop offset="1" stop-color="#08121d"/></linearGradient>
+    <radialGradient id="map-hero-halo"><stop stop-color="#83dced" stop-opacity=".24"/><stop offset="1" stop-color="#83dced" stop-opacity="0"/></radialGradient>
+    <radialGradient id="map-hero-rose"><stop stop-color="#ff9ab1" stop-opacity=".22"/><stop offset="1" stop-color="#ff9ab1" stop-opacity="0"/></radialGradient>
+    <radialGradient id="map-hero-ember"><stop stop-color="#e5ba7a" stop-opacity=".27"/><stop offset="1" stop-color="#e5ba7a" stop-opacity="0"/></radialGradient>
+    <pattern id="map-hero-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#83dced" stroke-opacity=".055" stroke-width="1"/></pattern>
+    <pattern id="map-hero-hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><path d="M0 0V12" stroke="#83dced" stroke-opacity=".08" stroke-width="1"/></pattern>
+    <filter id="map-hero-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3"/></filter>
+    <symbol id="map-hero-doll" viewBox="0 0 140 290">
+      <path d="M43 56C27 42 33 13 51 7C76-3 94 17 92 43L104 114L88 131L75 68L49 85L34 109Z" fill="#172532"/>
+      <path d="M53 43L54 66L77 68L75 42" fill="#a98091"/>
+      <path d="M46 23C48 9 74 9 81 24L78 45L66 56L51 47Z" fill="#e0adb9"/>
+      <path d="M39 30C37 10 55 2 71 7C91 12 91 29 88 45L77 29L63 27L50 33L49 50L38 64Z" fill="#182737"/>
+      <path d="M51 61L69 70L80 62L98 84L90 130L102 189L82 202L61 194L40 208L27 190L42 132L33 94Z" fill="#263f53"/>
+      <path d="M51 63L61 83L68 72L73 88L81 64L84 120L69 145L49 123Z" fill="#95b2bf"/>
+      <path d="M54 78L69 92L77 81M45 133L88 137M49 140L46 172M80 143L84 175" fill="none" stroke="#ff9ab1" stroke-width="3"/>
+      <path d="M43 85L27 101L18 139L30 144L43 119L52 113M84 79L105 99L116 128L105 139L86 112L78 102" fill="#35536a"/>
+      <path d="M39 193L60 194L57 238L49 275L31 275L37 235ZM70 194L89 196L94 230L97 271L80 275L76 232Z" fill="#101e2d"/>
+      <path d="M33 267L48 267L50 282L27 285L21 280ZM81 266L96 265L105 281L79 284Z" fill="#21384b"/>
+      <path d="M35 65L45 61M88 61L96 69M38 94L29 122M90 93L107 120M32 185L44 189M91 178L97 191" fill="none" stroke="#8cb5c6" stroke-opacity=".65" stroke-width="1.6"/>
+      <path d="M10 124L23 124L25 117L72 109L74 101L85 99L87 106L127 99L132 103L89 116L91 125L82 128L76 119L58 123L50 140L39 142L42 128L21 136L14 133Z" fill="#071019" stroke="#7591a5" stroke-width="1.2"/>
+      <path d="M27 126L61 118" stroke="#ff9ab1" stroke-opacity=".7" stroke-width="2"/>
+    </symbol>
+    <symbol id="map-hero-worker" viewBox="0 0 80 190">
+      <path d="M26 26C26 3 53 3 54 24L50 41L29 41Z" fill="#6c9ba6"/>
+      <path d="M23 18H57L53 10L31 9Z" fill="#bdd9dd"/>
+      <path d="M27 44L52 44L62 58L56 106L64 137L47 140L40 111L33 140L15 137L24 107L18 61Z" fill="#4c758a"/>
+      <path d="M20 52L8 76L10 105L18 104L22 80L33 65M53 53L67 75L64 99L55 95L57 77L47 67" fill="#759daa"/>
+      <path d="M20 137H35L33 180H16ZM47 138H60L64 180H48" fill="#254758"/>
+      <path d="M15 175H32V188H9V184ZM48 175H64L70 188H48Z" fill="#47697c"/>
+      <path d="M29 54H49V82H29ZM29 94H48" fill="none" stroke="#a9d7df" stroke-width="1.5"/>
+      <circle cx="28" cy="138" r="4" fill="#83dced"/><circle cx="54" cy="138" r="4" fill="#83dced"/>
+    </symbol>
+    <symbol id="map-hero-monolith" viewBox="0 0 160 230"><path d="M35 201L42 37L81 8L121 40L125 202L81 224Z" fill="#182e42" stroke="#83dced" stroke-opacity=".35"/><path d="M81 8V224L125 202L121 40Z" fill="#28465b"/><path d="M81 35L58 57L55 174L81 196L107 174L104 58Z" fill="#091826" stroke="#83dced" stroke-opacity=".7"/><path class="halo-pulse" d="M81 63L67 88L81 114L95 88Z" fill="#83dced"/><path d="M81 113V173M67 125V158L81 173L95 158V125" fill="none" stroke="#83dced" stroke-width="2"/><path d="M47 55L35 70M116 58L129 72M44 176L30 189M120 177L135 190" stroke="#4a788b" stroke-width="3"/></symbol>
+    <symbol id="map-hero-city" viewBox="0 0 640 145"><path d="M0 145V99H25V78H46V48H63V79H76V113H89V63H112V73H127V28H148V17H157V91H178V110H193V55H220V72H233V38H253V66H273V98H289V52H303V82H323V36H346V58H357V103H375V80H391V45H415V77H429V109H445V57H461V26H485V71H504V112H519V83H538V54H555V64H573V99H588V77H612V108H640V145Z" fill="currentColor"/><path d="M136 46V55M136 66V75M240 58V68M334 60V70M334 84V94M404 68V76M474 49V59M548 75V84M34 104V111" stroke="#83dced" stroke-width="3" stroke-opacity=".45"/></symbol>
+  </defs><rect width="640" height="430" fill="url(#map-hero-sky)"/><rect width="640" height="430" fill="url(#map-hero-grid)"/><path d="M24 54V24H54M586 24H616V54M24 376V406H54M586 406H616V376" fill="none" stroke="#7397aa" stroke-opacity=".35"/><g fill="#a2bdca" opacity=".42"><circle cx="75" cy="67" r="1"/><circle cx="229" cy="40" r="1"/><circle cx="438" cy="49" r="1.3"/><circle cx="551" cy="82" r="1"/><circle cx="595" cy="154" r="1"/><circle cx="332" cy="28" r="1"/></g><circle cx="320" cy="274" r="208" fill="url(#map-hero-halo)"/>
+  <use href="#map-hero-city" x="18" y="54" width="604" height="137" style="color:#253e50"/>
+  <path d="M0 190H640V207L568 214L481 205L383 216L311 207L220 216L122 204L58 213L0 205Z" fill="#708493" opacity=".25"/>
+  <path d="M0 210L107 220L220 211L342 226L442 212L540 220L640 208V430H0Z" fill="url(#map-hero-earth)"/>
+  <path d="M0 256C116 238 144 278 258 255C375 232 425 274 537 249L640 263M0 309C98 285 164 330 276 305C400 279 491 330 640 294M0 374C119 348 232 395 365 365C466 342 530 379 640 357" fill="none" stroke="#83dced" stroke-opacity=".10" stroke-width="2"/>
+  <path d="M0 212H640V430H0Z" fill="url(#map-hero-hatch)"/>
+  <g fill="none" stroke="#ff9ab1" stroke-opacity=".4"><path d="M92 124L168 75L282 104L383 62L463 115L551 89"/><path d="M168 75L238 41L383 62M282 104L335 149L463 115"/></g>
+  <g fill="#ff9ab1"><circle cx="92" cy="124" r="3"/><circle cx="168" cy="75" r="4"/><circle cx="282" cy="104" r="3"/><circle cx="383" cy="62" r="4"/><circle cx="463" cy="115" r="3"/><circle cx="551" cy="89" r="3"/></g>
+  <g fill="none" stroke="#83dced" stroke-width="1.5"><path class="signal-flow" d="M168 79V180L196 217V273L300 308M463 119V200L433 230V271L338 308M282 108V196L316 230V267" stroke-opacity=".7" stroke-dasharray="3 9"/><path d="M103 320H170L224 348H279M358 348L416 319H535" stroke-opacity=".3"/></g>
+  <ellipse cx="320" cy="383" rx="136" ry="18" fill="#06121f"/>
+  <use href="#map-hero-monolith" x="247" y="222" width="146" height="200"/>
+  <path d="M84 361V275L118 254L150 275V363L118 379Z" fill="#1e3b50" stroke="#83dced" stroke-opacity=".3"/><path d="M118 268V353M103 287L118 304L134 287M103 326H134" fill="none" stroke="#83dced" stroke-opacity=".5"/>
+  <path d="M485 359V283L517 257L549 283V359L517 377Z" fill="#1e3b50" stroke="#83dced" stroke-opacity=".3"/><path d="M517 276V355M502 295L517 312L532 295M502 329H532" fill="none" stroke="#83dced" stroke-opacity=".5"/>
+  <path d="M168 190H471" stroke="#b5c1c4" stroke-opacity=".3"/><path d="M287 214L302 210L332 216L348 209" fill="none" stroke="#83dced" stroke-opacity=".4"/></svg></div></section><div class="legend" aria-label="色の意味"><span><i class="pink"></i>人物・物語</span><span><i></i>技術・世界史</span><span><i class="amber"></i>災厄・断絶</span></div><div class="atlas"><svg class="atlas-wires" aria-hidden="true"></svg><div class="atlas-surface"><article class="map-node tone-pink" id="map-1" data-reveal><div class="mini-scene"><svg class="scene-art" viewBox="0 0 640 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="map-scene-1-title map-scene-1-desc"><title id="map-scene-1-title">戦術人形と戦場</title><desc id="map-scene-1-desc">廃墟の街を背に、銃を携えた三人の少女型戦術人形が立つ象徴画。</desc><defs>
+    <linearGradient id="map-scene-1-sky" x2=".8" y2="1"><stop stop-color="#14283b"/><stop offset="1" stop-color="#07111b"/></linearGradient>
+    <linearGradient id="map-scene-1-pink" x2="0" y2="1"><stop stop-color="#ffb4c5"/><stop offset="1" stop-color="#8b526d"/></linearGradient>
+    <linearGradient id="map-scene-1-steel" x2="1" y2="1"><stop stop-color="#b6d6df"/><stop offset=".4" stop-color="#628f9d"/><stop offset="1" stop-color="#263f53"/></linearGradient>
+    <linearGradient id="map-scene-1-beam" x2="0" y2="1"><stop stop-color="#83dced" stop-opacity=".48"/><stop offset="1" stop-color="#83dced" stop-opacity="0"/></linearGradient>
+    <linearGradient id="map-scene-1-earth" x2="0" y2="1"><stop stop-color="#172b3e"/><stop offset="1" stop-color="#08121d"/></linearGradient>
+    <radialGradient id="map-scene-1-halo"><stop stop-color="#83dced" stop-opacity=".24"/><stop offset="1" stop-color="#83dced" stop-opacity="0"/></radialGradient>
+    <radialGradient id="map-scene-1-rose"><stop stop-color="#ff9ab1" stop-opacity=".22"/><stop offset="1" stop-color="#ff9ab1" stop-opacity="0"/></radialGradient>
+    <radialGradient id="map-scene-1-ember"><stop stop-color="#e5ba7a" stop-opacity=".27"/><stop offset="1" stop-color="#e5ba7a" stop-opacity="0"/></radialGradient>
+    <pattern id="map-scene-1-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#83dced" stroke-opacity=".055" stroke-width="1"/></pattern>
+    <pattern id="map-scene-1-hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><path d="M0 0V12" stroke="#83dced" stroke-opacity=".08" stroke-width="1"/></pattern>
+    <filter id="map-scene-1-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3"/></filter>
+    <symbol id="map-scene-1-doll" viewBox="0 0 140 290">
+      <path d="M43 56C27 42 33 13 51 7C76-3 94 17 92 43L104 114L88 131L75 68L49 85L34 109Z" fill="#172532"/>
+      <path d="M53 43L54 66L77 68L75 42" fill="#a98091"/>
+      <path d="M46 23C48 9 74 9 81 24L78 45L66 56L51 47Z" fill="#e0adb9"/>
+      <path d="M39 30C37 10 55 2 71 7C91 12 91 29 88 45L77 29L63 27L50 33L49 50L38 64Z" fill="#182737"/>
+      <path d="M51 61L69 70L80 62L98 84L90 130L102 189L82 202L61 194L40 208L27 190L42 132L33 94Z" fill="#263f53"/>
+      <path d="M51 63L61 83L68 72L73 88L81 64L84 120L69 145L49 123Z" fill="#95b2bf"/>
+      <path d="M54 78L69 92L77 81M45 133L88 137M49 140L46 172M80 143L84 175" fill="none" stroke="#ff9ab1" stroke-width="3"/>
+      <path d="M43 85L27 101L18 139L30 144L43 119L52 113M84 79L105 99L116 128L105 139L86 112L78 102" fill="#35536a"/>
+      <path d="M39 193L60 194L57 238L49 275L31 275L37 235ZM70 194L89 196L94 230L97 271L80 275L76 232Z" fill="#101e2d"/>
+      <path d="M33 267L48 267L50 282L27 285L21 280ZM81 266L96 265L105 281L79 284Z" fill="#21384b"/>
+      <path d="M35 65L45 61M88 61L96 69M38 94L29 122M90 93L107 120M32 185L44 189M91 178L97 191" fill="none" stroke="#8cb5c6" stroke-opacity=".65" stroke-width="1.6"/>
+      <path d="M10 124L23 124L25 117L72 109L74 101L85 99L87 106L127 99L132 103L89 116L91 125L82 128L76 119L58 123L50 140L39 142L42 128L21 136L14 133Z" fill="#071019" stroke="#7591a5" stroke-width="1.2"/>
+      <path d="M27 126L61 118" stroke="#ff9ab1" stroke-opacity=".7" stroke-width="2"/>
+    </symbol>
+    <symbol id="map-scene-1-worker" viewBox="0 0 80 190">
+      <path d="M26 26C26 3 53 3 54 24L50 41L29 41Z" fill="#6c9ba6"/>
+      <path d="M23 18H57L53 10L31 9Z" fill="#bdd9dd"/>
+      <path d="M27 44L52 44L62 58L56 106L64 137L47 140L40 111L33 140L15 137L24 107L18 61Z" fill="#4c758a"/>
+      <path d="M20 52L8 76L10 105L18 104L22 80L33 65M53 53L67 75L64 99L55 95L57 77L47 67" fill="#759daa"/>
+      <path d="M20 137H35L33 180H16ZM47 138H60L64 180H48" fill="#254758"/>
+      <path d="M15 175H32V188H9V184ZM48 175H64L70 188H48Z" fill="#47697c"/>
+      <path d="M29 54H49V82H29ZM29 94H48" fill="none" stroke="#a9d7df" stroke-width="1.5"/>
+      <circle cx="28" cy="138" r="4" fill="#83dced"/><circle cx="54" cy="138" r="4" fill="#83dced"/>
+    </symbol>
+    <symbol id="map-scene-1-monolith" viewBox="0 0 160 230"><path d="M35 201L42 37L81 8L121 40L125 202L81 224Z" fill="#182e42" stroke="#83dced" stroke-opacity=".35"/><path d="M81 8V224L125 202L121 40Z" fill="#28465b"/><path d="M81 35L58 57L55 174L81 196L107 174L104 58Z" fill="#091826" stroke="#83dced" stroke-opacity=".7"/><path class="halo-pulse" d="M81 63L67 88L81 114L95 88Z" fill="#83dced"/><path d="M81 113V173M67 125V158L81 173L95 158V125" fill="none" stroke="#83dced" stroke-width="2"/><path d="M47 55L35 70M116 58L129 72M44 176L30 189M120 177L135 190" stroke="#4a788b" stroke-width="3"/></symbol>
+    <symbol id="map-scene-1-city" viewBox="0 0 640 145"><path d="M0 145V99H25V78H46V48H63V79H76V113H89V63H112V73H127V28H148V17H157V91H178V110H193V55H220V72H233V38H253V66H273V98H289V52H303V82H323V36H346V58H357V103H375V80H391V45H415V77H429V109H445V57H461V26H485V71H504V112H519V83H538V54H555V64H573V99H588V77H612V108H640V145Z" fill="currentColor"/><path d="M136 46V55M136 66V75M240 58V68M334 60V70M334 84V94M404 68V76M474 49V59M548 75V84M34 104V111" stroke="#83dced" stroke-width="3" stroke-opacity=".45"/></symbol>
+  </defs><rect width="640" height="430" fill="url(#map-scene-1-sky)"/><rect width="640" height="430" fill="url(#map-scene-1-grid)"/><path d="M24 54V24H54M586 24H616V54M24 376V406H54M586 406H616V376" fill="none" stroke="#7397aa" stroke-opacity=".35"/><g fill="#a2bdca" opacity=".42"><circle cx="75" cy="67" r="1"/><circle cx="229" cy="40" r="1"/><circle cx="438" cy="49" r="1.3"/><circle cx="551" cy="82" r="1"/><circle cx="595" cy="154" r="1"/><circle cx="332" cy="28" r="1"/></g><circle cx="353" cy="178" r="204" fill="url(#map-scene-1-rose)"/><circle cx="386" cy="111" r="66" fill="#ff9ab1" opacity=".09"/>
+  <g class="ambient-drift"><path d="M0 121L153 108L310 129L466 106L640 133V164L422 146L231 158L0 144Z" fill="#456070" opacity=".14"/></g>
+  <use href="#map-scene-1-city" x="0" y="125" width="640" height="145" style="color:#1a3448"/><path d="M0 300L127 275L248 291L345 281L455 294L640 259V430H0Z" fill="#101f2d"/>
+  <g fill="none" stroke="#83dced" stroke-opacity=".16"><path d="M320 273L59 430M320 273L580 430M320 273V430M0 342H640M0 390H640"/><circle cx="320" cy="184" r="142" stroke-dasharray="3 12"/><path d="M157 185H198M441 185H485M320 30V64"/></g>
+  <use href="#map-scene-1-doll" x="122" y="136" width="119" height="244" opacity=".62"/>
+  <g transform="translate(578 0) scale(-1 1)"><use href="#map-scene-1-doll" x="115" y="144" width="118" height="244" opacity=".67"/></g>
+  <ellipse cx="324" cy="388" rx="106" ry="14" fill="#030a11" opacity=".5"/>
+  <use href="#map-scene-1-doll" x="253" y="73" width="155" height="321"/>
+  <path d="M298 80C293 114 282 145 275 154M356 87C372 110 368 135 384 172" fill="none" stroke="#ff9ab1" stroke-opacity=".43" stroke-width="2"/>
+  <g fill="#ff9ab1" opacity=".6"><circle class="halo-pulse" cx="82" cy="300" r="2"/><circle cx="528" cy="322" r="2"/><circle cx="419" cy="72" r="1.5"/></g>
+  <path class="signal-flow" d="M49 361H134L159 338H205M435 337H468L492 362H590" fill="none" stroke="#ff9ab1" stroke-opacity=".45" stroke-dasharray="4 10"/>
+  <path d="M0 414L120 398L208 412L329 401L421 414L533 395L640 409V430H0Z" fill="#071019"/></svg></div><div class="node-copy"><div class="chapter-label"><span class="chapter-number">01</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 20 7v6c0 4-8 8-8 8S4 17 4 13V7Z"/><path d="m8 12 3 3 5-6"/></svg><span>人形と戦場</span></div><h2>入口は、人形と銃。</h2><p>少女型の戦術人形を編成し、作戦へ。<br>キャラクター・部隊・戦場という、直感的な魅力。</p></div></article><article class="map-node tone-pink" id="map-2" data-reveal><div class="mini-scene"><svg class="scene-art" viewBox="0 0 640 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="map-scene-2-title map-scene-2-desc"><title id="map-scene-2-title">重なり合う人物の物語</title><desc id="map-scene-2-desc">背中を預け合う二人の戦術人形。過去の仲間や記憶が淡い光の枝でつながる象徴画。</desc><defs>
+    <linearGradient id="map-scene-2-sky" x2=".8" y2="1"><stop stop-color="#14283b"/><stop offset="1" stop-color="#07111b"/></linearGradient>
+    <linearGradient id="map-scene-2-pink" x2="0" y2="1"><stop stop-color="#ffb4c5"/><stop offset="1" stop-color="#8b526d"/></linearGradient>
+    <linearGradient id="map-scene-2-steel" x2="1" y2="1"><stop stop-color="#b6d6df"/><stop offset=".4" stop-color="#628f9d"/><stop offset="1" stop-color="#263f53"/></linearGradient>
+    <linearGradient id="map-scene-2-beam" x2="0" y2="1"><stop stop-color="#83dced" stop-opacity=".48"/><stop offset="1" stop-color="#83dced" stop-opacity="0"/></linearGradient>
+    <linearGradient id="map-scene-2-earth" x2="0" y2="1"><stop stop-color="#172b3e"/><stop offset="1" stop-color="#08121d"/></linearGradient>
+    <radialGradient id="map-scene-2-halo"><stop stop-color="#83dced" stop-opacity=".24"/><stop offset="1" stop-color="#83dced" stop-opacity="0"/></radialGradient>
+    <radialGradient id="map-scene-2-rose"><stop stop-color="#ff9ab1" stop-opacity=".22"/><stop offset="1" stop-color="#ff9ab1" stop-opacity="0"/></radialGradient>
+    <radialGradient id="map-scene-2-ember"><stop stop-color="#e5ba7a" stop-opacity=".27"/><stop offset="1" stop-color="#e5ba7a" stop-opacity="0"/></radialGradient>
+    <pattern id="map-scene-2-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#83dced" stroke-opacity=".055" stroke-width="1"/></pattern>
+    <pattern id="map-scene-2-hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><path d="M0 0V12" stroke="#83dced" stroke-opacity=".08" stroke-width="1"/></pattern>
+    <filter id="map-scene-2-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3"/></filter>
+    <symbol id="map-scene-2-doll" viewBox="0 0 140 290">
+      <path d="M43 56C27 42 33 13 51 7C76-3 94 17 92 43L104 114L88 131L75 68L49 85L34 109Z" fill="#172532"/>
+      <path d="M53 43L54 66L77 68L75 42" fill="#a98091"/>
+      <path d="M46 23C48 9 74 9 81 24L78 45L66 56L51 47Z" fill="#e0adb9"/>
+      <path d="M39 30C37 10 55 2 71 7C91 12 91 29 88 45L77 29L63 27L50 33L49 50L38 64Z" fill="#182737"/>
+      <path d="M51 61L69 70L80 62L98 84L90 130L102 189L82 202L61 194L40 208L27 190L42 132L33 94Z" fill="#263f53"/>
+      <path d="M51 63L61 83L68 72L73 88L81 64L84 120L69 145L49 123Z" fill="#95b2bf"/>
+      <path d="M54 78L69 92L77 81M45 133L88 137M49 140L46 172M80 143L84 175" fill="none" stroke="#ff9ab1" stroke-width="3"/>
+      <path d="M43 85L27 101L18 139L30 144L43 119L52 113M84 79L105 99L116 128L105 139L86 112L78 102" fill="#35536a"/>
+      <path d="M39 193L60 194L57 238L49 275L31 275L37 235ZM70 194L89 196L94 230L97 271L80 275L76 232Z" fill="#101e2d"/>
+      <path d="M33 267L48 267L50 282L27 285L21 280ZM81 266L96 265L105 281L79 284Z" fill="#21384b"/>
+      <path d="M35 65L45 61M88 61L96 69M38 94L29 122M90 93L107 120M32 185L44 189M91 178L97 191" fill="none" stroke="#8cb5c6" stroke-opacity=".65" stroke-width="1.6"/>
+      <path d="M10 124L23 124L25 117L72 109L74 101L85 99L87 106L127 99L132 103L89 116L91 125L82 128L76 119L58 123L50 140L39 142L42 128L21 136L14 133Z" fill="#071019" stroke="#7591a5" stroke-width="1.2"/>
+      <path d="M27 126L61 118" stroke="#ff9ab1" stroke-opacity=".7" stroke-width="2"/>
+    </symbol>
+    <symbol id="map-scene-2-worker" viewBox="0 0 80 190">
+      <path d="M26 26C26 3 53 3 54 24L50 41L29 41Z" fill="#6c9ba6"/>
+      <path d="M23 18H57L53 10L31 9Z" fill="#bdd9dd"/>
+      <path d="M27 44L52 44L62 58L56 106L64 137L47 140L40 111L33 140L15 137L24 107L18 61Z" fill="#4c758a"/>
+      <path d="M20 52L8 76L10 105L18 104L22 80L33 65M53 53L67 75L64 99L55 95L57 77L47 67" fill="#759daa"/>
+      <path d="M20 137H35L33 180H16ZM47 138H60L64 180H48" fill="#254758"/>
+      <path d="M15 175H32V188H9V184ZM48 175H64L70 188H48Z" fill="#47697c"/>
+      <path d="M29 54H49V82H29ZM29 94H48" fill="none" stroke="#a9d7df" stroke-width="1.5"/>
+      <circle cx="28" cy="138" r="4" fill="#83dced"/><circle cx="54" cy="138" r="4" fill="#83dced"/>
+    </symbol>
+    <symbol id="map-scene-2-monolith" viewBox="0 0 160 230"><path d="M35 201L42 37L81 8L121 40L125 202L81 224Z" fill="#182e42" stroke="#83dced" stroke-opacity=".35"/><path d="M81 8V224L125 202L121 40Z" fill="#28465b"/><path d="M81 35L58 57L55 174L81 196L107 174L104 58Z" fill="#091826" stroke="#83dced" stroke-opacity=".7"/><path class="halo-pulse" d="M81 63L67 88L81 114L95 88Z" fill="#83dced"/><path d="M81 113V173M67 125V158L81 173L95 158V125" fill="none" stroke="#83dced" stroke-width="2"/><path d="M47 55L35 70M116 58L129 72M44 176L30 189M120 177L135 190" stroke="#4a788b" stroke-width="3"/></symbol>
+    <symbol id="map-scene-2-city" viewBox="0 0 640 145"><path d="M0 145V99H25V78H46V48H63V79H76V113H89V63H112V73H127V28H148V17H157V91H178V110H193V55H220V72H233V38H253V66H273V98H289V52H303V82H323V36H346V58H357V103H375V80H391V45H415V77H429V109H445V57H461V26H485V71H504V112H519V83H538V54H555V64H573V99H588V77H612V108H640V145Z" fill="currentColor"/><path d="M136 46V55M136 66V75M240 58V68M334 60V70M334 84V94M404 68V76M474 49V59M548 75V84M34 104V111" stroke="#83dced" stroke-width="3" stroke-opacity=".45"/></symbol>
+  </defs><rect width="640" height="430" fill="url(#map-scene-2-sky)"/><rect width="640" height="430" fill="url(#map-scene-2-grid)"/><path d="M24 54V24H54M586 24H616V54M24 376V406H54M586 406H616V376" fill="none" stroke="#7397aa" stroke-opacity=".35"/><g fill="#a2bdca" opacity=".42"><circle cx="75" cy="67" r="1"/><circle cx="229" cy="40" r="1"/><circle cx="438" cy="49" r="1.3"/><circle cx="551" cy="82" r="1"/><circle cx="595" cy="154" r="1"/><circle cx="332" cy="28" r="1"/></g><circle cx="320" cy="195" r="210" fill="url(#map-scene-2-rose)"/>
+  <g fill="none" stroke="#ff9ab1"><path d="M319 317C288 247 231 211 125 171M320 318C361 249 413 208 520 164M314 213C290 172 248 128 202 78M330 209C369 169 393 125 423 64" stroke-opacity=".2" stroke-width="1.4"/><path class="signal-flow" d="M319 317C288 247 231 211 125 171M320 318C361 249 413 208 520 164" stroke-opacity=".6" stroke-dasharray="2 11"/></g>
+  <g opacity=".5"><path d="M40 323V195L109 163L178 195V326M461 326V198L532 163L600 198V323" fill="#182b3d"/><path d="M52 210H166M473 210H588M53 286H166M473 286H588" stroke="#57778a" stroke-opacity=".4"/></g>
+  <g opacity=".35"><use href="#map-scene-2-doll" x="66" y="183" width="59" height="124"/><use href="#map-scene-2-doll" x="113" y="194" width="55" height="114"/><use href="#map-scene-2-worker" x="483" y="204" width="42" height="102"/><use href="#map-scene-2-worker" x="533" y="205" width="42" height="102"/></g>
+  <circle cx="202" cy="78" r="22" fill="#203347" stroke="#ff9ab1" stroke-opacity=".45"/><path d="M190 82L200 64L213 85L201 91Z" fill="none" stroke="#ff9ab1" stroke-width="1.7"/>
+  <circle cx="423" cy="64" r="22" fill="#203347" stroke="#ff9ab1" stroke-opacity=".45"/><path d="M412 64C414 55 423 58 423 62C425 54 435 56 434 63L423 73Z" fill="#ff9ab1" opacity=".6"/>
+  <path d="M197 109L213 123M425 95L413 117M150 145L166 155M482 139L466 153" stroke="#8093a6" stroke-opacity=".45"/>
+  <path d="M0 356C169 334 206 333 320 349C439 336 539 334 640 350V430H0Z" fill="#0d1b29"/>
+  <ellipse cx="319" cy="388" rx="155" ry="13" fill="#030b13" opacity=".55"/>
+  <use href="#map-scene-2-doll" x="194" y="102" width="130" height="282"/>
+  <g transform="translate(647 0) scale(-1 1)"><use href="#map-scene-2-doll" x="191" y="103" width="130" height="282"/></g>
+  <path d="M296 209L320 215L343 209" fill="none" stroke="#ff9ab1" stroke-width="2" opacity=".8"/>
+  <g fill="#ff9ab1"><circle class="halo-pulse" cx="319" cy="215" r="4"/><circle cx="124" cy="172" r="3"/><circle cx="520" cy="165" r="3"/></g>
+  <path d="M80 385H147M491 385H560" stroke="#ff9ab1" stroke-opacity=".25"/></svg></div><div class="node-copy"><div class="chapter-label"><span class="chapter-number">02</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="7" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20v-3a6 6 0 0 1 12 0v3m2-7a5 5 0 0 1 6 5v2"/></svg><span>人物ドラマ</span></div><h2>小さな物語も、深い。</h2><p>仲間、因縁、過去、再会、喪失。<br>部隊ごとに伸びる濃いドラマが、別の事件や組織へつながる。</p></div></article></div><div class="atlas-bridge" id="map-bridge" data-reveal><h2>視点は、一人ではない。</h2><p>人物・部隊・組織・時代が、同じ世界の別の断面を映す。</p></div><div class="atlas-roots"><article class="map-node tone-amber" id="map-3" data-reveal><div class="mini-scene"><svg class="scene-art" viewBox="0 0 640 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="map-scene-3-title map-scene-3-desc"><title id="map-scene-3-title">壊れた世界と自律人形</title><desc id="map-scene-3-desc">青く光る古代遺跡、戦争で壊れた都市、縮小した生活圏と働く自律人形を重ねた象徴画。</desc><defs>
+    <linearGradient id="map-scene-3-sky" x2=".8" y2="1"><stop stop-color="#14283b"/><stop offset="1" stop-color="#07111b"/></linearGradient>
+    <linearGradient id="map-scene-3-pink" x2="0" y2="1"><stop stop-color="#ffb4c5"/><stop offset="1" stop-color="#8b526d"/></linearGradient>
+    <linearGradient id="map-scene-3-steel" x2="1" y2="1"><stop stop-color="#b6d6df"/><stop offset=".4" stop-color="#628f9d"/><stop offset="1" stop-color="#263f53"/></linearGradient>
+    <linearGradient id="map-scene-3-beam" x2="0" y2="1"><stop stop-color="#83dced" stop-opacity=".48"/><stop offset="1" stop-color="#83dced" stop-opacity="0"/></linearGradient>
+    <linearGradient id="map-scene-3-earth" x2="0" y2="1"><stop stop-color="#172b3e"/><stop offset="1" stop-color="#08121d"/></linearGradient>
+    <radialGradient id="map-scene-3-halo"><stop stop-color="#83dced" stop-opacity=".24"/><stop offset="1" stop-color="#83dced" stop-opacity="0"/></radialGradient>
+    <radialGradient id="map-scene-3-rose"><stop stop-color="#ff9ab1" stop-opacity=".22"/><stop offset="1" stop-color="#ff9ab1" stop-opacity="0"/></radialGradient>
+    <radialGradient id="map-scene-3-ember"><stop stop-color="#e5ba7a" stop-opacity=".27"/><stop offset="1" stop-color="#e5ba7a" stop-opacity="0"/></radialGradient>
+    <pattern id="map-scene-3-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#83dced" stroke-opacity=".055" stroke-width="1"/></pattern>
+    <pattern id="map-scene-3-hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><path d="M0 0V12" stroke="#83dced" stroke-opacity=".08" stroke-width="1"/></pattern>
+    <filter id="map-scene-3-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3"/></filter>
+    <symbol id="map-scene-3-doll" viewBox="0 0 140 290">
+      <path d="M43 56C27 42 33 13 51 7C76-3 94 17 92 43L104 114L88 131L75 68L49 85L34 109Z" fill="#172532"/>
+      <path d="M53 43L54 66L77 68L75 42" fill="#a98091"/>
+      <path d="M46 23C48 9 74 9 81 24L78 45L66 56L51 47Z" fill="#e0adb9"/>
+      <path d="M39 30C37 10 55 2 71 7C91 12 91 29 88 45L77 29L63 27L50 33L49 50L38 64Z" fill="#182737"/>
+      <path d="M51 61L69 70L80 62L98 84L90 130L102 189L82 202L61 194L40 208L27 190L42 132L33 94Z" fill="#263f53"/>
+      <path d="M51 63L61 83L68 72L73 88L81 64L84 120L69 145L49 123Z" fill="#95b2bf"/>
+      <path d="M54 78L69 92L77 81M45 133L88 137M49 140L46 172M80 143L84 175" fill="none" stroke="#ff9ab1" stroke-width="3"/>
+      <path d="M43 85L27 101L18 139L30 144L43 119L52 113M84 79L105 99L116 128L105 139L86 112L78 102" fill="#35536a"/>
+      <path d="M39 193L60 194L57 238L49 275L31 275L37 235ZM70 194L89 196L94 230L97 271L80 275L76 232Z" fill="#101e2d"/>
+      <path d="M33 267L48 267L50 282L27 285L21 280ZM81 266L96 265L105 281L79 284Z" fill="#21384b"/>
+      <path d="M35 65L45 61M88 61L96 69M38 94L29 122M90 93L107 120M32 185L44 189M91 178L97 191" fill="none" stroke="#8cb5c6" stroke-opacity=".65" stroke-width="1.6"/>
+      <path d="M10 124L23 124L25 117L72 109L74 101L85 99L87 106L127 99L132 103L89 116L91 125L82 128L76 119L58 123L50 140L39 142L42 128L21 136L14 133Z" fill="#071019" stroke="#7591a5" stroke-width="1.2"/>
+      <path d="M27 126L61 118" stroke="#ff9ab1" stroke-opacity=".7" stroke-width="2"/>
+    </symbol>
+    <symbol id="map-scene-3-worker" viewBox="0 0 80 190">
+      <path d="M26 26C26 3 53 3 54 24L50 41L29 41Z" fill="#6c9ba6"/>
+      <path d="M23 18H57L53 10L31 9Z" fill="#bdd9dd"/>
+      <path d="M27 44L52 44L62 58L56 106L64 137L47 140L40 111L33 140L15 137L24 107L18 61Z" fill="#4c758a"/>
+      <path d="M20 52L8 76L10 105L18 104L22 80L33 65M53 53L67 75L64 99L55 95L57 77L47 67" fill="#759daa"/>
+      <path d="M20 137H35L33 180H16ZM47 138H60L64 180H48" fill="#254758"/>
+      <path d="M15 175H32V188H9V184ZM48 175H64L70 188H48Z" fill="#47697c"/>
+      <path d="M29 54H49V82H29ZM29 94H48" fill="none" stroke="#a9d7df" stroke-width="1.5"/>
+      <circle cx="28" cy="138" r="4" fill="#83dced"/><circle cx="54" cy="138" r="4" fill="#83dced"/>
+    </symbol>
+    <symbol id="map-scene-3-monolith" viewBox="0 0 160 230"><path d="M35 201L42 37L81 8L121 40L125 202L81 224Z" fill="#182e42" stroke="#83dced" stroke-opacity=".35"/><path d="M81 8V224L125 202L121 40Z" fill="#28465b"/><path d="M81 35L58 57L55 174L81 196L107 174L104 58Z" fill="#091826" stroke="#83dced" stroke-opacity=".7"/><path class="halo-pulse" d="M81 63L67 88L81 114L95 88Z" fill="#83dced"/><path d="M81 113V173M67 125V158L81 173L95 158V125" fill="none" stroke="#83dced" stroke-width="2"/><path d="M47 55L35 70M116 58L129 72M44 176L30 189M120 177L135 190" stroke="#4a788b" stroke-width="3"/></symbol>
+    <symbol id="map-scene-3-city" viewBox="0 0 640 145"><path d="M0 145V99H25V78H46V48H63V79H76V113H89V63H112V73H127V28H148V17H157V91H178V110H193V55H220V72H233V38H253V66H273V98H289V52H303V82H323V36H346V58H357V103H375V80H391V45H415V77H429V109H445V57H461V26H485V71H504V112H519V83H538V54H555V64H573V99H588V77H612V108H640V145Z" fill="currentColor"/><path d="M136 46V55M136 66V75M240 58V68M334 60V70M334 84V94M404 68V76M474 49V59M548 75V84M34 104V111" stroke="#83dced" stroke-width="3" stroke-opacity=".45"/></symbol>
+  </defs><rect width="640" height="430" fill="url(#map-scene-3-sky)"/><rect width="640" height="430" fill="url(#map-scene-3-grid)"/><path d="M24 54V24H54M586 24H616V54M24 376V406H54M586 406H616V376" fill="none" stroke="#7397aa" stroke-opacity=".35"/><g fill="#a2bdca" opacity=".42"><circle cx="75" cy="67" r="1"/><circle cx="229" cy="40" r="1"/><circle cx="438" cy="49" r="1.3"/><circle cx="551" cy="82" r="1"/><circle cx="595" cy="154" r="1"/><circle cx="332" cy="28" r="1"/></g><circle cx="126" cy="177" r="175" fill="url(#map-scene-3-halo)"/><circle cx="360" cy="120" r="184" fill="url(#map-scene-3-ember)"/>
+  <path d="M0 301L32 268L89 283L155 252L232 281L314 266L414 288L488 271L562 297L640 275V430H0Z" fill="#132838"/>
+  <path d="M232 152L244 81L253 111L266 64L278 113L297 104L312 147L334 128L344 154L371 157L381 138L397 150L403 198L430 188L456 263H225Z" fill="#2f343a"/>
+  <path d="M234 172H264V247H288V150H314V261H333V205H362V275H383V177H406V254H429V273" fill="#0c1925" stroke="#8c755b" stroke-opacity=".55"/>
+  <g class="ambient-drift" fill="#e5ba7a" opacity=".1"><path d="M280 110C244 66 303 63 283 19C337 54 324 79 327 118Z"/><path d="M359 144C377 80 341 50 375 16C362 78 424 94 402 161Z"/></g>
+  <path d="M0 349L150 331L242 352L369 335L478 359L640 335V430H0Z" fill="#07121e"/>
+  <use href="#map-scene-3-monolith" x="52" y="114" width="164" height="236"/>
+  <path d="M49 350L112 328L198 349L167 365L83 366Z" fill="#273e4a"/><path d="M111 340L148 350L142 361M87 352L110 358" stroke="#83dced" stroke-opacity=".45" fill="none"/>
+  <path d="M440 293A88 88 0 0 1 616 293" fill="url(#map-scene-3-beam)" stroke="#83dced" stroke-opacity=".5" stroke-width="1.5"/>
+  <path d="M455 291V267H474V248H490V267H504V237H523V268H540V252H558V265H579V246H594V290" fill="#2e5060" stroke="#83dced" stroke-opacity=".25"/>
+  <path d="M441 294H616M449 299H605" stroke="#83dced" stroke-opacity=".5"/>
+  <use href="#map-scene-3-worker" x="478" y="280" width="51" height="125"/><use href="#map-scene-3-worker" x="543" y="293" width="42" height="105" opacity=".7"/>
+  <g fill="none"><path d="M178 385C265 383 337 365 427 374" stroke="#e5ba7a" stroke-opacity=".28" stroke-width="2"/><path class="signal-flow" d="M178 385C265 383 337 365 427 374" stroke="#e5ba7a" stroke-dasharray="4 14"/><path d="M415 365L429 374L414 383" stroke="#e5ba7a" stroke-opacity=".6"/></g>
+  <g fill="#e5ba7a" opacity=".6"><circle cx="327" cy="186" r="2"/><circle cx="287" cy="137" r="1.5"/><circle cx="390" cy="95" r="1.5"/></g>
+  <path d="M209 48L234 53M406 45L428 39M388 316L402 326M283 312L276 328" stroke="#8b9fac" stroke-opacity=".2"/></svg></div><div class="node-copy"><div class="chapter-label"><span class="chapter-number">03</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V11h5v10m1 0V4h7v17m1 0v-8h4v8M2 21h20M12 7l-1 4 3 3-2 4"/></svg><span>壊れた世界</span></div><h2>人形が必要になった社会</h2><ol class="compact-chain"><li><strong>遺跡発見</strong><span>コーラップス技術</span></li><li><strong>世界規模の汚染</strong><span>生活可能圏が削られる</span></li><li><strong>第3次世界大戦</strong><span>人口が激減</span></li><li><strong>生活圏の縮小</strong><span>労働力不足</span></li><li><strong>自律人形の普及</strong><span>不足する人手を補う</span></li></ol></div></article><article class="map-node" id="map-4" data-reveal><div class="mini-scene"><svg class="scene-art" viewBox="0 0 640 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="map-scene-4-title map-scene-4-desc"><title id="map-scene-4-title">科学者と人形の起源</title><desc id="map-scene-4-desc">神経回路が浮かぶ頭部のスキャンと、記録端末を手にする科学者を描いた象徴画。</desc><defs>
+    <linearGradient id="map-scene-4-sky" x2=".8" y2="1"><stop stop-color="#14283b"/><stop offset="1" stop-color="#07111b"/></linearGradient>
+    <linearGradient id="map-scene-4-pink" x2="0" y2="1"><stop stop-color="#ffb4c5"/><stop offset="1" stop-color="#8b526d"/></linearGradient>
+    <linearGradient id="map-scene-4-steel" x2="1" y2="1"><stop stop-color="#b6d6df"/><stop offset=".4" stop-color="#628f9d"/><stop offset="1" stop-color="#263f53"/></linearGradient>
+    <linearGradient id="map-scene-4-beam" x2="0" y2="1"><stop stop-color="#83dced" stop-opacity=".48"/><stop offset="1" stop-color="#83dced" stop-opacity="0"/></linearGradient>
+    <linearGradient id="map-scene-4-earth" x2="0" y2="1"><stop stop-color="#172b3e"/><stop offset="1" stop-color="#08121d"/></linearGradient>
+    <radialGradient id="map-scene-4-halo"><stop stop-color="#83dced" stop-opacity=".24"/><stop offset="1" stop-color="#83dced" stop-opacity="0"/></radialGradient>
+    <radialGradient id="map-scene-4-rose"><stop stop-color="#ff9ab1" stop-opacity=".22"/><stop offset="1" stop-color="#ff9ab1" stop-opacity="0"/></radialGradient>
+    <radialGradient id="map-scene-4-ember"><stop stop-color="#e5ba7a" stop-opacity=".27"/><stop offset="1" stop-color="#e5ba7a" stop-opacity="0"/></radialGradient>
+    <pattern id="map-scene-4-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#83dced" stroke-opacity=".055" stroke-width="1"/></pattern>
+    <pattern id="map-scene-4-hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><path d="M0 0V12" stroke="#83dced" stroke-opacity=".08" stroke-width="1"/></pattern>
+    <filter id="map-scene-4-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3"/></filter>
+    <symbol id="map-scene-4-doll" viewBox="0 0 140 290">
+      <path d="M43 56C27 42 33 13 51 7C76-3 94 17 92 43L104 114L88 131L75 68L49 85L34 109Z" fill="#172532"/>
+      <path d="M53 43L54 66L77 68L75 42" fill="#a98091"/>
+      <path d="M46 23C48 9 74 9 81 24L78 45L66 56L51 47Z" fill="#e0adb9"/>
+      <path d="M39 30C37 10 55 2 71 7C91 12 91 29 88 45L77 29L63 27L50 33L49 50L38 64Z" fill="#182737"/>
+      <path d="M51 61L69 70L80 62L98 84L90 130L102 189L82 202L61 194L40 208L27 190L42 132L33 94Z" fill="#263f53"/>
+      <path d="M51 63L61 83L68 72L73 88L81 64L84 120L69 145L49 123Z" fill="#95b2bf"/>
+      <path d="M54 78L69 92L77 81M45 133L88 137M49 140L46 172M80 143L84 175" fill="none" stroke="#ff9ab1" stroke-width="3"/>
+      <path d="M43 85L27 101L18 139L30 144L43 119L52 113M84 79L105 99L116 128L105 139L86 112L78 102" fill="#35536a"/>
+      <path d="M39 193L60 194L57 238L49 275L31 275L37 235ZM70 194L89 196L94 230L97 271L80 275L76 232Z" fill="#101e2d"/>
+      <path d="M33 267L48 267L50 282L27 285L21 280ZM81 266L96 265L105 281L79 284Z" fill="#21384b"/>
+      <path d="M35 65L45 61M88 61L96 69M38 94L29 122M90 93L107 120M32 185L44 189M91 178L97 191" fill="none" stroke="#8cb5c6" stroke-opacity=".65" stroke-width="1.6"/>
+      <path d="M10 124L23 124L25 117L72 109L74 101L85 99L87 106L127 99L132 103L89 116L91 125L82 128L76 119L58 123L50 140L39 142L42 128L21 136L14 133Z" fill="#071019" stroke="#7591a5" stroke-width="1.2"/>
+      <path d="M27 126L61 118" stroke="#ff9ab1" stroke-opacity=".7" stroke-width="2"/>
+    </symbol>
+    <symbol id="map-scene-4-worker" viewBox="0 0 80 190">
+      <path d="M26 26C26 3 53 3 54 24L50 41L29 41Z" fill="#6c9ba6"/>
+      <path d="M23 18H57L53 10L31 9Z" fill="#bdd9dd"/>
+      <path d="M27 44L52 44L62 58L56 106L64 137L47 140L40 111L33 140L15 137L24 107L18 61Z" fill="#4c758a"/>
+      <path d="M20 52L8 76L10 105L18 104L22 80L33 65M53 53L67 75L64 99L55 95L57 77L47 67" fill="#759daa"/>
+      <path d="M20 137H35L33 180H16ZM47 138H60L64 180H48" fill="#254758"/>
+      <path d="M15 175H32V188H9V184ZM48 175H64L70 188H48Z" fill="#47697c"/>
+      <path d="M29 54H49V82H29ZM29 94H48" fill="none" stroke="#a9d7df" stroke-width="1.5"/>
+      <circle cx="28" cy="138" r="4" fill="#83dced"/><circle cx="54" cy="138" r="4" fill="#83dced"/>
+    </symbol>
+    <symbol id="map-scene-4-monolith" viewBox="0 0 160 230"><path d="M35 201L42 37L81 8L121 40L125 202L81 224Z" fill="#182e42" stroke="#83dced" stroke-opacity=".35"/><path d="M81 8V224L125 202L121 40Z" fill="#28465b"/><path d="M81 35L58 57L55 174L81 196L107 174L104 58Z" fill="#091826" stroke="#83dced" stroke-opacity=".7"/><path class="halo-pulse" d="M81 63L67 88L81 114L95 88Z" fill="#83dced"/><path d="M81 113V173M67 125V158L81 173L95 158V125" fill="none" stroke="#83dced" stroke-width="2"/><path d="M47 55L35 70M116 58L129 72M44 176L30 189M120 177L135 190" stroke="#4a788b" stroke-width="3"/></symbol>
+    <symbol id="map-scene-4-city" viewBox="0 0 640 145"><path d="M0 145V99H25V78H46V48H63V79H76V113H89V63H112V73H127V28H148V17H157V91H178V110H193V55H220V72H233V38H253V66H273V98H289V52H303V82H323V36H346V58H357V103H375V80H391V45H415V77H429V109H445V57H461V26H485V71H504V112H519V83H538V54H555V64H573V99H588V77H612V108H640V145Z" fill="currentColor"/><path d="M136 46V55M136 66V75M240 58V68M334 60V70M334 84V94M404 68V76M474 49V59M548 75V84M34 104V111" stroke="#83dced" stroke-width="3" stroke-opacity=".45"/></symbol>
+  </defs><rect width="640" height="430" fill="url(#map-scene-4-sky)"/><rect width="640" height="430" fill="url(#map-scene-4-grid)"/><path d="M24 54V24H54M586 24H616V54M24 376V406H54M586 406H616V376" fill="none" stroke="#7397aa" stroke-opacity=".35"/><g fill="#a2bdca" opacity=".42"><circle cx="75" cy="67" r="1"/><circle cx="229" cy="40" r="1"/><circle cx="438" cy="49" r="1.3"/><circle cx="551" cy="82" r="1"/><circle cx="595" cy="154" r="1"/><circle cx="332" cy="28" r="1"/></g><circle cx="294" cy="202" r="191" fill="url(#map-scene-4-halo)"/><circle cx="416" cy="164" r="110" fill="url(#map-scene-4-rose)"/>
+  <path d="M63 366V112L106 68H448L494 115V366" fill="#102333" stroke="#4e8195" stroke-opacity=".3"/>
+  <path d="M91 351V122L118 94H435L466 126V351" fill="#0b1927" stroke="#83dced" stroke-opacity=".25"/>
+  <g fill="none" stroke="#83dced" stroke-opacity=".22"><circle cx="281" cy="210" r="125"/><circle cx="281" cy="210" r="112" stroke-dasharray="2 9"/><path d="M127 209H154M405 209H433M281 57V84M281 333V361"/></g>
+  <path d="M220 307L229 273L230 242C198 223 189 196 195 165C202 122 241 100 281 111C320 123 334 154 324 189L339 210L324 221L323 237L312 249L289 251L291 278L309 307Z" fill="#19374a" stroke="#83dced" stroke-opacity=".7" stroke-width="1.4"/>
+  <path d="M213 167C208 142 238 120 260 131C280 118 306 140 306 157C321 170 310 191 294 193C288 207 267 209 256 197C239 207 219 194 221 181C210 180 207 173 213 167Z" fill="#83dced" fill-opacity=".09" stroke="#a3e1eb" stroke-width="1.4"/>
+  <path d="M226 152L244 160L254 142L274 160L294 149M221 180L245 176L256 197M244 160L245 176L274 182L294 193M274 160V182L304 170" fill="none" stroke="#83dced" stroke-opacity=".65"/>
+  <g fill="#b4ecf1"><circle class="halo-pulse" cx="244" cy="160" r="3"/><circle cx="274" cy="182" r="3"/><circle cx="294" cy="149" r="2"/></g>
+  <path class="scan-sweep" d="M175 205H344" stroke="#b1eff3" stroke-width="2" opacity=".65"/>
+  <path d="M163 319H342L361 343H145Z" fill="#325168"/><path d="M166 324H333" stroke="#83dced" stroke-opacity=".5"/>
+  <path class="signal-flow" d="M303 150H376L394 168H484V230" fill="none" stroke="#ff9ab1" stroke-dasharray="4 9" stroke-width="1.7"/>
+  <g transform="translate(413 194)"><path d="M43 29C43 7 77 3 80 25L76 49L53 55L42 45Z" fill="#cb9fae"/><path d="M41 30C31 2 64-8 81 8L89 30L75 22L67 28L48 26L47 44Z" fill="#112435"/><path d="M49 52L65 64L76 51L94 64L104 142L88 146L80 96L85 174H34L42 97L26 134L12 128L29 73Z" fill="#96b9c5"/><path d="M49 53L62 82L76 52L79 113H49Z" fill="#223b50"/><path d="M60 86V164M44 128H53M75 128H84" stroke="#345969" stroke-width="2"/><path d="M37 174H56L53 212H30ZM64 174H82L86 212H66Z" fill="#29485c"/><path d="M29 128L15 124L5 107L11 100L31 115" fill="#d1aab7"/><path d="M-2 90L43 97L34 122L-10 111Z" fill="#182d40" stroke="#83dced" stroke-opacity=".65"/><path d="M0 97L29 103M-2 103L21 109" stroke="#83dced" stroke-width="1.5"/></g>
+  <path d="M34 388H396M560 388H607" stroke="#63859b" stroke-opacity=".25"/>
+  <g fill="#83dced" opacity=".55"><rect x="107" y="151" width="3" height="23"/><rect x="107" y="180" width="3" height="8"/><rect x="446" y="150" width="3" height="16"/></g></svg></div><div class="node-copy"><div class="chapter-label"><span class="chapter-number">04</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3a4 4 0 0 0-4 4 4 4 0 0 0-2 7 4 4 0 0 0 6 6m6-17a4 4 0 0 1 4 4 4 4 0 0 1 2 7 4 4 0 0 1-6 6M9 3v18m6-18v18M5 7h4m6 7h6M3 14h6m6-7h4"/></svg><span>科学と陰謀</span></div><h2>仕組まれた起点</h2><p>自律人形・ニューラルクラウド技術を押し上げる、天才科学者たち。</p><ol class="compact-chain"><li><strong>重要人物の脳をスキャン</strong><span>科学者の一人が、それをもとに人形を作る</span></li><li><strong>その出来事も、陰謀の一部</strong><span>始まりに見えた起点そのものが謎になる</span></li></ol><div class="node-tags"><span>人格</span><span>記憶</span><span>模倣</span><span>自己</span></div></div></article><article class="map-node" id="map-5" data-reveal><div class="mini-scene"><svg class="scene-art" viewBox="0 0 640 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="map-scene-5-title map-scene-5-desc"><title id="map-scene-5-title">文明の地下でつながる遺跡</title><desc id="map-scene-5-desc">都市と組織を結ぶ地表の網が、地層の下に眠る遺跡へ収束する象徴画。</desc><defs>
+    <linearGradient id="map-scene-5-sky" x2=".8" y2="1"><stop stop-color="#14283b"/><stop offset="1" stop-color="#07111b"/></linearGradient>
+    <linearGradient id="map-scene-5-pink" x2="0" y2="1"><stop stop-color="#ffb4c5"/><stop offset="1" stop-color="#8b526d"/></linearGradient>
+    <linearGradient id="map-scene-5-steel" x2="1" y2="1"><stop stop-color="#b6d6df"/><stop offset=".4" stop-color="#628f9d"/><stop offset="1" stop-color="#263f53"/></linearGradient>
+    <linearGradient id="map-scene-5-beam" x2="0" y2="1"><stop stop-color="#83dced" stop-opacity=".48"/><stop offset="1" stop-color="#83dced" stop-opacity="0"/></linearGradient>
+    <linearGradient id="map-scene-5-earth" x2="0" y2="1"><stop stop-color="#172b3e"/><stop offset="1" stop-color="#08121d"/></linearGradient>
+    <radialGradient id="map-scene-5-halo"><stop stop-color="#83dced" stop-opacity=".24"/><stop offset="1" stop-color="#83dced" stop-opacity="0"/></radialGradient>
+    <radialGradient id="map-scene-5-rose"><stop stop-color="#ff9ab1" stop-opacity=".22"/><stop offset="1" stop-color="#ff9ab1" stop-opacity="0"/></radialGradient>
+    <radialGradient id="map-scene-5-ember"><stop stop-color="#e5ba7a" stop-opacity=".27"/><stop offset="1" stop-color="#e5ba7a" stop-opacity="0"/></radialGradient>
+    <pattern id="map-scene-5-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#83dced" stroke-opacity=".055" stroke-width="1"/></pattern>
+    <pattern id="map-scene-5-hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><path d="M0 0V12" stroke="#83dced" stroke-opacity=".08" stroke-width="1"/></pattern>
+    <filter id="map-scene-5-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3"/></filter>
+    <symbol id="map-scene-5-doll" viewBox="0 0 140 290">
+      <path d="M43 56C27 42 33 13 51 7C76-3 94 17 92 43L104 114L88 131L75 68L49 85L34 109Z" fill="#172532"/>
+      <path d="M53 43L54 66L77 68L75 42" fill="#a98091"/>
+      <path d="M46 23C48 9 74 9 81 24L78 45L66 56L51 47Z" fill="#e0adb9"/>
+      <path d="M39 30C37 10 55 2 71 7C91 12 91 29 88 45L77 29L63 27L50 33L49 50L38 64Z" fill="#182737"/>
+      <path d="M51 61L69 70L80 62L98 84L90 130L102 189L82 202L61 194L40 208L27 190L42 132L33 94Z" fill="#263f53"/>
+      <path d="M51 63L61 83L68 72L73 88L81 64L84 120L69 145L49 123Z" fill="#95b2bf"/>
+      <path d="M54 78L69 92L77 81M45 133L88 137M49 140L46 172M80 143L84 175" fill="none" stroke="#ff9ab1" stroke-width="3"/>
+      <path d="M43 85L27 101L18 139L30 144L43 119L52 113M84 79L105 99L116 128L105 139L86 112L78 102" fill="#35536a"/>
+      <path d="M39 193L60 194L57 238L49 275L31 275L37 235ZM70 194L89 196L94 230L97 271L80 275L76 232Z" fill="#101e2d"/>
+      <path d="M33 267L48 267L50 282L27 285L21 280ZM81 266L96 265L105 281L79 284Z" fill="#21384b"/>
+      <path d="M35 65L45 61M88 61L96 69M38 94L29 122M90 93L107 120M32 185L44 189M91 178L97 191" fill="none" stroke="#8cb5c6" stroke-opacity=".65" stroke-width="1.6"/>
+      <path d="M10 124L23 124L25 117L72 109L74 101L85 99L87 106L127 99L132 103L89 116L91 125L82 128L76 119L58 123L50 140L39 142L42 128L21 136L14 133Z" fill="#071019" stroke="#7591a5" stroke-width="1.2"/>
+      <path d="M27 126L61 118" stroke="#ff9ab1" stroke-opacity=".7" stroke-width="2"/>
+    </symbol>
+    <symbol id="map-scene-5-worker" viewBox="0 0 80 190">
+      <path d="M26 26C26 3 53 3 54 24L50 41L29 41Z" fill="#6c9ba6"/>
+      <path d="M23 18H57L53 10L31 9Z" fill="#bdd9dd"/>
+      <path d="M27 44L52 44L62 58L56 106L64 137L47 140L40 111L33 140L15 137L24 107L18 61Z" fill="#4c758a"/>
+      <path d="M20 52L8 76L10 105L18 104L22 80L33 65M53 53L67 75L64 99L55 95L57 77L47 67" fill="#759daa"/>
+      <path d="M20 137H35L33 180H16ZM47 138H60L64 180H48" fill="#254758"/>
+      <path d="M15 175H32V188H9V184ZM48 175H64L70 188H48Z" fill="#47697c"/>
+      <path d="M29 54H49V82H29ZM29 94H48" fill="none" stroke="#a9d7df" stroke-width="1.5"/>
+      <circle cx="28" cy="138" r="4" fill="#83dced"/><circle cx="54" cy="138" r="4" fill="#83dced"/>
+    </symbol>
+    <symbol id="map-scene-5-monolith" viewBox="0 0 160 230"><path d="M35 201L42 37L81 8L121 40L125 202L81 224Z" fill="#182e42" stroke="#83dced" stroke-opacity=".35"/><path d="M81 8V224L125 202L121 40Z" fill="#28465b"/><path d="M81 35L58 57L55 174L81 196L107 174L104 58Z" fill="#091826" stroke="#83dced" stroke-opacity=".7"/><path class="halo-pulse" d="M81 63L67 88L81 114L95 88Z" fill="#83dced"/><path d="M81 113V173M67 125V158L81 173L95 158V125" fill="none" stroke="#83dced" stroke-width="2"/><path d="M47 55L35 70M116 58L129 72M44 176L30 189M120 177L135 190" stroke="#4a788b" stroke-width="3"/></symbol>
+    <symbol id="map-scene-5-city" viewBox="0 0 640 145"><path d="M0 145V99H25V78H46V48H63V79H76V113H89V63H112V73H127V28H148V17H157V91H178V110H193V55H220V72H233V38H253V66H273V98H289V52H303V82H323V36H346V58H357V103H375V80H391V45H415V77H429V109H445V57H461V26H485V71H504V112H519V83H538V54H555V64H573V99H588V77H612V108H640V145Z" fill="currentColor"/><path d="M136 46V55M136 66V75M240 58V68M334 60V70M334 84V94M404 68V76M474 49V59M548 75V84M34 104V111" stroke="#83dced" stroke-width="3" stroke-opacity=".45"/></symbol>
+  </defs><rect width="640" height="430" fill="url(#map-scene-5-sky)"/><rect width="640" height="430" fill="url(#map-scene-5-grid)"/><path d="M24 54V24H54M586 24H616V54M24 376V406H54M586 406H616V376" fill="none" stroke="#7397aa" stroke-opacity=".35"/><g fill="#a2bdca" opacity=".42"><circle cx="75" cy="67" r="1"/><circle cx="229" cy="40" r="1"/><circle cx="438" cy="49" r="1.3"/><circle cx="551" cy="82" r="1"/><circle cx="595" cy="154" r="1"/><circle cx="332" cy="28" r="1"/></g><circle cx="320" cy="274" r="208" fill="url(#map-scene-5-halo)"/>
+  <use href="#map-scene-5-city" x="18" y="54" width="604" height="137" style="color:#253e50"/>
+  <path d="M0 190H640V207L568 214L481 205L383 216L311 207L220 216L122 204L58 213L0 205Z" fill="#708493" opacity=".25"/>
+  <path d="M0 210L107 220L220 211L342 226L442 212L540 220L640 208V430H0Z" fill="url(#map-scene-5-earth)"/>
+  <path d="M0 256C116 238 144 278 258 255C375 232 425 274 537 249L640 263M0 309C98 285 164 330 276 305C400 279 491 330 640 294M0 374C119 348 232 395 365 365C466 342 530 379 640 357" fill="none" stroke="#83dced" stroke-opacity=".10" stroke-width="2"/>
+  <path d="M0 212H640V430H0Z" fill="url(#map-scene-5-hatch)"/>
+  <g fill="none" stroke="#ff9ab1" stroke-opacity=".4"><path d="M92 124L168 75L282 104L383 62L463 115L551 89"/><path d="M168 75L238 41L383 62M282 104L335 149L463 115"/></g>
+  <g fill="#ff9ab1"><circle cx="92" cy="124" r="3"/><circle cx="168" cy="75" r="4"/><circle cx="282" cy="104" r="3"/><circle cx="383" cy="62" r="4"/><circle cx="463" cy="115" r="3"/><circle cx="551" cy="89" r="3"/></g>
+  <g fill="none" stroke="#83dced" stroke-width="1.5"><path class="signal-flow" d="M168 79V180L196 217V273L300 308M463 119V200L433 230V271L338 308M282 108V196L316 230V267" stroke-opacity=".7" stroke-dasharray="3 9"/><path d="M103 320H170L224 348H279M358 348L416 319H535" stroke-opacity=".3"/></g>
+  <ellipse cx="320" cy="383" rx="136" ry="18" fill="#06121f"/>
+  <use href="#map-scene-5-monolith" x="247" y="222" width="146" height="200"/>
+  <path d="M84 361V275L118 254L150 275V363L118 379Z" fill="#1e3b50" stroke="#83dced" stroke-opacity=".3"/><path d="M118 268V353M103 287L118 304L134 287M103 326H134" fill="none" stroke="#83dced" stroke-opacity=".5"/>
+  <path d="M485 359V283L517 257L549 283V359L517 377Z" fill="#1e3b50" stroke="#83dced" stroke-opacity=".3"/><path d="M517 276V355M502 295L517 312L532 295M502 329H532" fill="none" stroke="#83dced" stroke-opacity=".5"/>
+  <path d="M168 190H471" stroke="#b5c1c4" stroke-opacity=".3"/><path d="M287 214L302 210L332 216L348 209" fill="none" stroke="#83dced" stroke-opacity=".4"/></svg></div><div class="node-copy"><div class="chapter-label"><span class="chapter-number">05</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 7 5v14H5V7Zm0 0v20M2 22h20m-10-7-3-4 3-4 3 4Z"/></svg><span>遺跡と文明</span></div><h2>異なる思想、共通の根</h2><p>国家、軍、企業、研究勢力、秘密組織。敵か味方かだけでは整理できない思惑が、遺跡技術で交差する。</p><ol class="compact-chain"><li><strong>個人の選択と国家の方向</strong><span>人物のドラマが、文明の問題へ接続する</span></li><li><strong>人類の行き先</strong><span>国家統合・人類進化・情報生命</span></li></ol></div></article></div><div class="atlas-core" id="map-core" data-reveal><div class="eyebrow">A SHARED ROOT</div><h2>遺跡技術と、人類文明の行き先。</h2><p>「人形の戦争」の下に、世界の崩壊と再編、科学と陰謀の歴史がある。</p></div><section class="atlas-future" id="map-6" data-reveal><div class="future-heading"><div><div class="chapter-label"><span class="chapter-number">06</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21V9m0 7L5 9m7 4 7-7"/><circle cx="5" cy="6" r="3"/><circle cx="19" cy="4" r="2"/><circle cx="12" cy="6" r="3"/></svg><span>枝と未来</span></div><h2>物語が完結しても、世界は続く。</h2></div><span class="future-origin">ドールズフロントライン：完結 → 残された枝</span></div><div class="works"><article class="work"><div class="work-label">PERSONALITY &amp; MEMORY</div><h3>ニューラルクラウド</h3><p>人形の人格・記憶・情報生命を、別の方向から掘り下げる。</p></article><article class="work"><div class="work-label">THE BRANCHES CONTINUE</div><h3>ドールズフロントライン2</h3><p>ドルフロ1で生まれた人物や組織の枝が、再び動き出す。</p></article><article class="work"><div class="work-label">A FURTHER FUTURE</div><h3>逆コーラップス：パン屋作戦</h3><p>さらに未来の人物と時代から、同じ世界史を見つめる。</p></article></div></section></div></main><footer class="footer"><span>GIRLS' FRONTLINE / WORLD CHRONICLE</span><span>VISUAL EDITION 03</span></footer></div>
+<script>
+(() => {
+  'use strict';
+  const root = document.documentElement;
+  const button = document.querySelector('[data-motion-toggle]');
+  const label = button?.querySelector('[data-motion-label]');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  let userPaused = false;
+  let revealObserver;
+  const revealAll = () => {
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      el.classList.remove('reveal-pending');
+      el.classList.add('revealed');
+    });
+  };
+  const applyMotion = () => {
+    const paused = userPaused || reduced.matches;
+    root.classList.toggle('motion-paused', paused);
+    if (button) {
+      button.hidden = false;
+      button.disabled = reduced.matches;
+      button.setAttribute('aria-pressed', String(paused));
+      button.setAttribute('aria-label', reduced.matches ? '端末の設定により動きを抑制中' : (paused ? '動きを再開する' : '動きを止める'));
+    }
+    if (label) label.textContent = reduced.matches ? '動きの抑制中' : (paused ? '動きを再開' : '動きを止める');
+    if (paused) { revealAll(); revealObserver?.disconnect(); }
+  };
+  if ('IntersectionObserver' in window && !reduced.matches) {
+    root.classList.add('motion-ready');
+    revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.remove('reveal-pending');
+        entry.target.classList.add('revealed');
+        revealObserver.unobserve(entry.target);
+      });
+    }, {threshold:0,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      if (el.getBoundingClientRect().top < innerHeight - 40) el.classList.add('revealed');
+      else { el.classList.add('reveal-pending'); revealObserver.observe(el); }
+    });
+    const sceneObserver = new IntersectionObserver(entries => entries.forEach(e => e.target.classList.toggle('offscreen', !e.isIntersecting)),{rootMargin:'100px'});
+    document.querySelectorAll('.scene-frame,.mini-scene,.hero-image').forEach(el => sceneObserver.observe(el));
+  }
+  button?.addEventListener('click', () => { userPaused = !userPaused; applyMotion(); });
+  reduced.addEventListener?.('change', applyMotion);
+  window.addEventListener('beforeprint', revealAll);
+  applyMotion();
+  // Connections are measured from real HTML boxes; they never cover node text.
+  const atlas = document.querySelector('.atlas');
+  const wires = atlas?.querySelector('.atlas-wires');
+  if (atlas && wires) {
+    let queued = false;
+    const draw = () => {
+      queued = false;
+      const rect = atlas.getBoundingClientRect();
+      if (!rect.width) return;
+      wires.setAttribute('viewBox', `0 0 ${rect.width} ${rect.height}`);
+      const point = (id,edge) => {
+        const el = document.getElementById(id);
+        if (!el) return null;
+        // offset coordinates exclude the reveal translateY transform.
+        let x=el.offsetWidth/2,y=edge==='top'?0:el.offsetHeight;
+        let node=el;
+        while(node && node!==atlas){x+=node.offsetLeft;y+=node.offsetTop;node=node.offsetParent;}
+        return {x,y};
+      };
+      const links=[['map-1','map-bridge','pink-wire'],['map-2','map-bridge','pink-wire'],['map-bridge','map-3',''],['map-bridge','map-4',''],['map-bridge','map-5',''],['map-3','map-core',''],['map-4','map-core',''],['map-5','map-core','']];
+      wires.innerHTML=links.map(([from,to,cls])=>{
+        const a=point(from,'bottom'),b=point(to,'top');
+        if(!a||!b)return '';
+        const mid=(a.y+b.y)/2;
+        return `<path class="${cls}" d="M ${a.x} ${a.y} C ${a.x} ${mid}, ${b.x} ${mid}, ${b.x} ${b.y}"/>`;
+      }).join('');
+    };
+    const schedule=()=>{if(!queued){queued=true;requestAnimationFrame(draw)}};
+    if ('ResizeObserver' in window) new ResizeObserver(schedule).observe(atlas);
+    window.addEventListener('resize',schedule);
+    document.fonts?.ready.then(schedule);
+    schedule();
+  }
+})();
+
+</script>
+</body>
+</html>
